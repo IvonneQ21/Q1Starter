@@ -12,3 +12,15 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+#mainHeader {
+  background: #808080 url("../css/happySummer.jpg") center center no-repeat;
+  padding-top: 10px;
+  position: center;
+  background-size: cover;
+  text-align: center;
+  padding: 100px ;
+  margin: 0 auto;
+}
+#searchText {
+  text-align: center;
+}
