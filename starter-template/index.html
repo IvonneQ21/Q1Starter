@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+  <title>CampFinder</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -11,7 +12,6 @@
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <!-- <link href="ccs/campFinder.css" type="text/css" rel="stylesheet"/> -->
 </head>
-
 <body>
 
   <nav class="l#eceff1 blue-grey lighten-5" role="navigation">
@@ -30,27 +30,34 @@
   </nav>
 
 <main id="mainHeader">
-
-    <!-- <div class="progress">
-    <div class="indeterminate"></div>
-    </div> -->
-  <!-- <div class="z-depth-2"> -->
   <div class="section no-pad-bot" id="index-banner">
     <div class="container" >
       <br><br>
       <div class="row center">
-      <span class="deep-orange-text text-darken">
-        <!-- <span class="white-text text-darken"> -->
+        <span class="deep-orange-text text-darken">
+      <!-- <span class="white-text text-darken"> -->
         <h1>Find The Perfect Camp For You And Your Children</h1>
       </span>
       </div>
     </div>
 
     <div class="container">
-      <div class="row">
-        <div class="col s12 flow-text">
+      <!-- <div class="row">
+        <div class="col s5">
+          <form action="">
+                  <select name="preference">
+                  <option value="camp name">Camp Name</option>
+                  <option value="zipcode">Zip Code</option>
+                  <option value="days">Camp Days</option>
+                  </select>
+          <br><br>
+        <input type="submit">
+        </form> -->
+      </div>
+        <div class="row">
+        <div class="col s6 flow-text offset-s6">
           <form action="search" style="overflow" id="searchCamp" method="get" role="search">
-            <input text-align="center" type="text" name="searchbar"  placeholder="Enter preference e.g age group, sport, camp site" id="searchText"></input><br>
+            <input text-align="center" type="text" name="searchbar"  placeholder="Enter your zipcode" id="searchText"></input><br>
           <!-- <input type="submit"> </input> -->
           <div class ="row">
             <button id="costumerSearch" name="action">
@@ -64,10 +71,15 @@
     </div>
 
   </div>
-  <div id="results" class="row"></div>
+
 </main>
+<div class="container">
+<div id="results" class="row"></div>
+</div>
 
   <!--  Scripts-->
+
+  <!-- <script defer src="js/jquery-2.2.4.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
