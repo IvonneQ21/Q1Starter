@@ -1,4 +1,3 @@
-
 const camps = [];
 
 let formName = document.getElementById('searchCamp');
@@ -16,7 +15,8 @@ let userInput = searchVal.value;
 //create the div that will then show up in the function.
 //
 
-function campFinder(zipCode) {
+function campFinder(zipCode){
+  const camps = [];
 
 // this array will found =globally
 // let url = `https://data.sfgov.org/resource/um8g-99ry.json?zipcode=${zipCode}`;
@@ -25,8 +25,8 @@ function campFinder(zipCode) {
   .then(function(returnedPro) {
     return returnedPro.json();
   })
-  .then(function(arrOfCamps) {
-      //creating an array of modifed objects.
+  .then(function(arrOfCamps){
+      //creating an array of modied objects.
       let arrCampsObjs = arrOfCamps.map(function(obj) {
           let newObj = {};
           newObj.name = obj.parkname;
@@ -35,14 +35,56 @@ function campFinder(zipCode) {
 
           return newObj;
           });
+          console.log(arrCampsObjs);
 
+          // for (let i = 0 ; i < arrCampsObjs.length ; i++) {
+          //   camps.push(arrCampsObjs[i]);
+
+        // }
           for (let j = 0; j < arrCampsObjs.length; j++) {
               let curCampObj = arrCampsObjs[j];
             createAndAppendCampCard(curCampObj);
+            // let campCard = createCard(curCamp);
           }
-      })
-  }
+            // function createAndAppendCampCard(curCamp){
+            //   let campCard = createCard(curCamp);
+            //   let results = document.getElementById('results');
+            //   appendToDom(result, campCard);
+            //
+            // }
+            // function appendToDom(results, campCard){
+            //   return results.appendChild(campCard);
+            // }
 
+            // console.log(curCamp);
+            // return createCard();
+            // let campLocation = document.createElement('div');
+            // campLocation.setAttribute('class', 'card-content');
+            // let phoneNumber = document.createElement('<span>')
+            //   let campPhone = phoneNumber.setAttribute(class="card-title");
+
+
+            // let campObj = document.
+            //work on these lines. interpolation refactor.
+            // let newDiv = document.createElement("div");
+            // newDiv.innerHTML = '<h5>' + camps[j].name+'</h5>';
+            // newDiv.innerHTML += '<p>' +'Telephone Number : ' + camps[j].number +'</p>';
+
+
+            // let setingAt = newDiv.setAttribute('class', 'row');
+            // let newCard = document.getElementById('results');
+            // newDiv.className='card blue-grey darken-1';
+            //start styilng here. into the className.
+            //work on this.
+            // newCard.append(campCard);
+            // rememeber the change to line   # 73
+
+
+        // }
+          // console.log(camps);
+      })
+
+  }
 
   // adding new options tab
   $(document).ready(function() {
@@ -77,6 +119,7 @@ function campFinder(zipCode) {
     // infoP.innerText = curCampObj.number;
     // infoP.innerText += curCampObj.email;
 
+   // topDiv.appendChild('topDivWClass');
    topDiv.append('secDiv');
    secDiv.append('thirdDiv');
    thirdDiv.append('fourthDiv');
