@@ -1,6 +1,4 @@
 
-const camps = [];
-
 let formName = document.getElementById('searchCamp');
 let searchVal = document.getElementById('searchText');
 let searchBtn = document.getElementById('costumerSearch');
@@ -11,15 +9,7 @@ let userInput = searchVal.value;
   campFinder(userInput);
 });
 
-//create function that will create the div
-//this will eventually be used to to be called in the for loop and
-//create the div that will then show up in the function.
-//
-
 function campFinder(zipCode) {
-
-// this array will found =globally
-// let url = `https://data.sfgov.org/resource/um8g-99ry.json?zipcode=${zipCode}`;
   let url =`https://data.sfgov.org/resource/94uf-amnx.json?zipcode=${zipCode}`;
   return fetch(url)
   .then(function(returnedPro) {
@@ -30,8 +20,10 @@ function campFinder(zipCode) {
       let arrCampsObjs = arrOfCamps.map(function(obj) {
           let newObj = {};
           newObj.name = obj.parkname;
+          newObj.type =obj.parktype;
           newObj.number = obj.number;
           newObj.email = obj.email;
+          newObj.manager = obj.psamanager;
 
           return newObj;
           });
@@ -43,13 +35,8 @@ function campFinder(zipCode) {
       })
   }
 
-
-  // adding new options tab
-  $(document).ready(function() {
-    $('select').material_select();
-  });
-
   function createAndAppendCampCard(curCampObj){
+    $('#results').empty();
     let campCard = createCard(curCampObj);
     let results = document.getElementById('results');
     appendToDom(results, campCard);
@@ -62,25 +49,24 @@ function campFinder(zipCode) {
 
   function createCard(curCampObj){
    let topDiv = document.createElement('div');
-    topDiv.setAttribute('class', 'row');
+    topDiv.setAttribute('class', 'row `${z-depth-5}`');
     topDiv.setAttribute('id','eachCard');
    let secDiv = document.createElement('div');
-    secDiv.setAttribute('class', 'col s12 m6');
+    secDiv.setAttribute('class', 'col s12 m12');
    let thirdDiv = document.createElement('div');
-    thirdDiv.setAttribute('class', 'card blue-grey darken-1');
+    thirdDiv.setAttribute('class', 'card pink lighten-1');
    let fourthDiv = document.createElement('div');
     fourthDiv.setAttribute('class', 'card-content white-text');
    let innerInfo = document.createElement('span');
     innerInfo.setAttribute('class', 'card-title');
     innerInfo.innerText = curCampObj.name;
   let infoP = document.createElement('p');
-    // infoP.innerText = curCampObj.number;
-    // infoP.innerText += curCampObj.email;
+    infoP.innerText = `Park name: ${curCampObj.name}\n Park type: ${curCampObj.type}\n Park manager: ${curCampObj.manager}\n Phone Number : ${curCampObj.number}\n  E-mail: ${curCampObj.email}\n `;
 
-   topDiv.append('secDiv');
-   secDiv.append('thirdDiv');
-   thirdDiv.append('fourthDiv');
-   fourthDiv.append('innerInfo');
-   innerInfo.append('infoP');
+   topDiv.append(secDiv);
+   secDiv.append(thirdDiv);
+   thirdDiv.append(fourthDiv);
+   fourthDiv.append(innerInfo);
+   innerInfo.append(infoP);
    return topDiv;
  }
